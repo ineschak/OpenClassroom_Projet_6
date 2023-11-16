@@ -10,6 +10,7 @@ let tagLine = document.querySelector("p");
 
 let currentIndex = 0;
 
+
 const slides = [
   {
     image: "./assets/images/slideshow/slide1.jpg",
