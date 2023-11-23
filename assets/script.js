@@ -1,15 +1,30 @@
-const flecheGauche = document.querySelector(".arrow_left");
+const flecheGauche = document.createElement("img");
+flecheGauche.src = "./assets/images/arrow_left.png";
+flecheGauche.className = "arrow arrow_left";
+banner.appendChild(flecheGauche);
 
-const flecheDroite = document.querySelector(".arrow_right");
+const flecheDroite = document.createElement("img");
+flecheDroite.src = "./assets/images/arrow_right.png";
+flecheDroite.className = "arrow arrow_right";
+banner.appendChild(flecheDroite);
 
-const dots = document.querySelector(".dots").children;
+const dots = document.createElement("ul");
+dots[0] = document.createElement("li");
+dots[0].className = "dot dot_selected";
+lesDots.appendChild(dots[0]);
+let i = 1;
+while (i < 4) {
+  dots[i] = document.createElement("li");
+  dots[i].className = "dot";
+  lesDots.appendChild(dots[i]);
+  i++;
+}
 
 const Image = document.querySelector(".banner-img");
 
 let tagLine = document.querySelector("p");
 
 let currentIndex = 0;
-
 
 const slides = [
   {
