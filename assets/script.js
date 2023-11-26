@@ -1,3 +1,4 @@
+// Création des flèches
 const flecheGauche = document.createElement("img");
 flecheGauche.src = "./assets/images/arrow_left.png";
 flecheGauche.className = "arrow arrow_left";
@@ -8,6 +9,7 @@ flecheDroite.src = "./assets/images/arrow_right.png";
 flecheDroite.className = "arrow arrow_right";
 banner.appendChild(flecheDroite);
 
+// Création des Dots
 const dots = document.createElement("ul");
 dots[0] = document.createElement("li");
 dots[0].className = "dot dot_selected";
@@ -21,9 +23,7 @@ while (i < 4) {
 }
 
 const Image = document.querySelector(".banner-img");
-
 let tagLine = document.querySelector("p");
-
 let currentIndex = 0;
 
 const slides = [
@@ -49,45 +49,52 @@ const slides = [
 const totalslides = slides.length;
 
 flecheDroite.addEventListener("click", () => {
-  nextImage();
+  nextImage(); //& nextDot
   console.log("Vous avez cliqué sur la flèche droite");
 });
 
 flecheGauche.addEventListener("click", () => {
-  previousImage();
+  previousImage(); //& previousDot
   console.log("Vous avez cliqué sur la flèche gauche");
 });
 
-// Function to go to next Image
-
-function nextImage() {
-  Image.src = slides[currentIndex].image;
-  tagLine.innerHTML = slides[currentIndex].tagLine;
+// Function to go to next Dot
+function nextDot() {
   dots[currentIndex].classList.remove("dot_selected");
-
   if (currentIndex == totalslides - 1) {
     currentIndex = 0;
   } else {
     currentIndex++;
   }
   dots[currentIndex].classList.add("dot_selected");
+}
+
+// Function to go to next Image
+function nextImage() {
+  Image.src = slides[currentIndex].image;
+  tagLine.innerHTML = slides[currentIndex].tagLine;
+  nextDot();
   Image.src = slides[currentIndex].image;
   tagLine.innerHTML = slides[currentIndex].tagLine;
 }
 
-// Function to go to previous Image
-
-function previousImage() {
-  Image.src = slides[totalslides - 1].image;
-  tagLine.innerHTML = slides[totalslides - 1].tagLine;
+// Function to go to previous Dot
+function previousDot() {
   dots[currentIndex].classList.remove("dot_selected");
-
   if (currentIndex == 0) {
     currentIndex = totalslides - 1;
+    dots[currentIndex].classList.add("dot_selected");
   } else {
     currentIndex--;
   }
+  dots[currentIndex].classList.add("dot_selected");
+}
+
+// Function to go to previous Image
+function previousImage() {
+  Image.src = slides[totalslides - 1].image;
+  tagLine.innerHTML = slides[totalslides - 1].tagLine;
+  previousDot();
   Image.src = slides[currentIndex].image;
   tagLine.innerHTML = slides[currentIndex].tagLine;
-  dots[currentIndex].classList.add("dot_selected");
 }
