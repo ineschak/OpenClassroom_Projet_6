@@ -9,6 +9,18 @@ flecheDroite.src = "./assets/images/arrow_right.png";
 flecheDroite.className = "arrow arrow_right";
 banner.appendChild(flecheDroite);
 
+// Ajout des EventListeners
+flecheDroite.addEventListener("click", () => {
+  nextImage(); //& nextDot
+  console.log("Vous avez cliqué sur la flèche droite");
+});
+
+flecheGauche.addEventListener("click", () => {
+  previousImage(); //& previousDot
+  console.log("Vous avez cliqué sur la flèche gauche");
+});
+
+
 // Création des Dots
 const dots = document.createElement("ul");
 dots[0] = document.createElement("li");
@@ -47,16 +59,6 @@ const slides = [
 ];
 
 const totalslides = slides.length;
-
-flecheDroite.addEventListener("click", () => {
-  nextImage(); //& nextDot
-  console.log("Vous avez cliqué sur la flèche droite");
-});
-
-flecheGauche.addEventListener("click", () => {
-  previousImage(); //& previousDot
-  console.log("Vous avez cliqué sur la flèche gauche");
-});
 
 // Function to go to next Dot
 function nextDot() {
